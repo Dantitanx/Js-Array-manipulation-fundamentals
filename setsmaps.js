@@ -18,17 +18,33 @@ personData.set(person2, [{ date: 'two weeks ago', price: 100 }]);
 console.log(personData);
 console.log(personData.get(person1));
 
-for (const [key,value] of personData.entries()) {
-    console.log(key,value);
-    
+for (const [key, value] of personData.entries()) {
+  console.log(key, value);
 }
 
 for (const key of personData.keys()) {
-    console.log(key);
-    
+  console.log(key);
 }
 
 for (const value of personData.values()) {
-    console.log(value);
-    
+  console.log(value);
 }
+
+//! Weakset, Weakmap
+
+let singlePerson = {name: 'Max'};
+const persons = new WeakSet(); //? The weakset allows data to be garbage collected. It doesn't hold the variable after it was emptied.
+
+
+persons.add(singlePerson);
+
+//singlePerson = null;
+console.log(persons);
+
+const personDataMap = new WeakMap();
+personDataMap.set(singlePerson, 'Extra info!');
+
+singlePerson = null;
+
+console.log(personDataMap);
+
